@@ -47,24 +47,53 @@ class linkedlist:
             new_node.ref=n.ref
             n.ref=new_node
             print("\nData inserted successfully\n")
+    def add_before(self,data,x):
+        n=self.head
+        if n is None:
+            print("\nLinked List is empty")
+            return
+        if n.data==x:
+            new=Node(data)
+            new.ref=n
+            n=new
+            print("\nNode inserted successfully\n")
+            return
+        while n.ref is not None:
+                if n.ref.data==x:
+                    break
+                else:
+                    n=n.ref
+        if n.ref is None:
+            print("Node is not present in the Linked List")
+            return
+        else:
+            new=Node(data)
+            new.ref=n.ref
+            n.ref=new
+            print("\nNode inserted successfully\n")
+            return
             
 if __name__=="__main__":
     ll1=linkedlist()
     while(True):
-        key=input("\n1.Traverse the linkedlist\n2.Quit\n3.Insert a node at begin\n4.Insert after a node\n5.Insert a node at the end\n\nChoose an option: ")
+        key=input("\n1.Traverse the linkedlist\n2.Quit\n3.Insert a node at begin\n4.Insert a node at the end\n5.Insert after a node\n6.Insert before a node\n\nChoose an option: ")
         if key=='1':
             ll1.printll()
+        elif key=='2':
+            break
         elif key=='3':
             value=input("Enter data to the node: ")
             ll1.addbegin(value)
-        elif key=='2':
-            break
-        elif key=='5':
+        elif key=='4':
             value=input("Enter data to the node: ")
             ll1.addend(value)
-        elif key=='4':
+        elif key=='5':
             value=int(input("Enter data to the node: "))
             x=int(input("Enter the node value after which data to be inserted: "))
             ll1.add_after(value,x)
+        elif key=='6':
+            value=int(input("Enter data to the node: "))
+            x=int(input("Enter the node value before which data to be inserted: "))
+            ll1.add_before(value,x)
         else:
             print("Enter correct option\n")
