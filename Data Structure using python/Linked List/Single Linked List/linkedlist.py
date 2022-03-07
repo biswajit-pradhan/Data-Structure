@@ -35,10 +35,11 @@ class linkedlist:
         print("\nData inserted successfully\n")
     def add_after(self,data,x):
         n=self.head
-        while n is not None:
+        while n.ref is not None:
             if x==n.data:
-                break;
-            n=n.ref
+                break
+            else:
+                n=n.ref
         if n is None:
             print("Node is not present in the Linked List\n")
         else:
